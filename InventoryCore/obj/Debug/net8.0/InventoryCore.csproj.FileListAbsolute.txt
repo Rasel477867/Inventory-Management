@@ -1,0 +1,15 @@
+D:\Inventory Mangament\InventoryManagement\InventoryCore\bin\Debug\net8.0\InventoryCore.deps.json
+D:\Inventory Mangament\InventoryManagement\InventoryCore\bin\Debug\net8.0\InventoryCore.runtimeconfig.json
+D:\Inventory Mangament\InventoryManagement\InventoryCore\bin\Debug\net8.0\InventoryCore.dll
+D:\Inventory Mangament\InventoryManagement\InventoryCore\bin\Debug\net8.0\InventoryCore.pdb
+D:\Inventory Mangament\InventoryManagement\InventoryCore\obj\Debug\net8.0\InventoryCore.csproj.AssemblyReference.cache
+D:\Inventory Mangament\InventoryManagement\InventoryCore\obj\Debug\net8.0\InventoryCore.GeneratedMSBuildEditorConfig.editorconfig
+D:\Inventory Mangament\InventoryManagement\InventoryCore\obj\Debug\net8.0\InventoryCore.AssemblyInfoInputs.cache
+D:\Inventory Mangament\InventoryManagement\InventoryCore\obj\Debug\net8.0\InventoryCore.AssemblyInfo.cs
+D:\Inventory Mangament\InventoryManagement\InventoryCore\obj\Debug\net8.0\InventoryCore.csproj.CoreCompileInputs.cache
+D:\Inventory Mangament\InventoryManagement\InventoryCore\obj\Debug\net8.0\InventoryCore.sourcelink.json
+D:\Inventory Mangament\InventoryManagement\InventoryCore\obj\Debug\net8.0\InventoryCore.dll
+D:\Inventory Mangament\InventoryManagement\InventoryCore\obj\Debug\net8.0\refint\InventoryCore.dll
+D:\Inventory Mangament\InventoryManagement\InventoryCore\obj\Debug\net8.0\InventoryCore.pdb
+D:\Inventory Mangament\InventoryManagement\InventoryCore\obj\Debug\net8.0\InventoryCore.genruntimeconfig.cache
+D:\Inventory Mangament\InventoryManagement\InventoryCore\obj\Debug\net8.0\ref\InventoryCore.dll
