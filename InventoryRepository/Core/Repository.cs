@@ -38,8 +38,6 @@ namespace InventoryRepository.Core
                 table.Update(Entity);
 
             });
-
-
         }
 
         public  IQueryable<T> GetAllAsync()
@@ -63,7 +61,6 @@ namespace InventoryRepository.Core
         {
             await Task.Run(() =>
             {
-
                 table.Update(Entity);
 
             });
