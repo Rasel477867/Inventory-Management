@@ -34,8 +34,8 @@ namespace InventoryRepository.Core
         {
             await Task.Run(() =>
             {
-                Entity.IsDeleted = true;
-                table.Update(Entity);
+               
+                table.Remove(Entity);
 
             });
         }

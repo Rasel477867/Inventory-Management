@@ -1,4 +1,5 @@
 ﻿using InventoryCore;
+using InventoryCore.Not_Mapped;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,9 @@ namespace InventoryService.Contact
     {
         Task<Category> GetByIdAsyc(Guid id);
         Task<List<Category>> GetAllListAsync();
-        Task UpdateAsync(Category Entity);
-        Task DeleteAsync(Category Entity);
+        Task<bool> UpdateAsync(Category Entity);
+        Task<bool> DeleteAsync(Guid Id);
         Task<Guid> AddAsync(Category Entity);
-        IQueryable<Category> GetAllAsync();
+        Task<(IEnumerable<Category> Categorys, int TotalCount)> GetCategorysAsync(CategoryQuery categoryQuery, int page, int pageSize);
     }
 }

@@ -1,4 +1,3 @@
-
 using Autofac.Extensions.DependencyInjection;
 using InventoryWeb;
 using Microsoft.AspNetCore.Hosting;
