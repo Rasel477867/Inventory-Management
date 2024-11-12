@@ -11,7 +11,6 @@ namespace InventoryService.Contact
     public interface ICategoryService
     {
         Task<Category> GetByIdAsyc(Guid id);
-        Task<List<Category>> GetAllListAsync();
         Task<bool> UpdateAsync(Category Entity);
         Task<bool> DeleteAsync(Guid Id);
         Task<Guid> AddAsync(Category Entity);

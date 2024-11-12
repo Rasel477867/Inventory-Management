@@ -17,5 +17,6 @@ namespace InventoryRepository
         {
             _dbcontext = db;
         }
+
     }
 }

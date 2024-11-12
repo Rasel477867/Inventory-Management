@@ -20,25 +20,22 @@ namespace InventoryService
         }
         public async Task<Guid> AddAsync(Category Entity)
         {
-            await _unitOfWork.CategoryRepository.AddAsync(Entity);
+            await _unitOfWork.CategoryRepository.Add(Entity);
             await _unitOfWork.CompleteAsync();
             return Entity.Id;
         }
-        public async Task<bool> DeleteAsync(Guid Id)
+        public async Task<bool> DeleteAsync(Guid id)
         {
-            var Entity = await _unitOfWork.CategoryRepository.GetByIdAsyc(Id);
-            await _unitOfWork.CategoryRepository.DeleteAsync(Entity);
-            return await _unitOfWork.CompleteAsync();
+           
+                await _unitOfWork.CategoryRepository.Delete(id);
+                return await _unitOfWork.CompleteAsync();
         }
 
-        public async Task<List<Category>> GetAllListAsync()
-        {
-            return await _unitOfWork.CategoryRepository.GetAllListAsync();
-        }
+    
 
         public async Task<Category> GetByIdAsyc(Guid id)
         {
-            return await _unitOfWork.CategoryRepository.GetByIdAsyc(id);
+            return await _unitOfWork.CategoryRepository.GetById(id);
         }
 
         public async Task<(IEnumerable<Category> Categorys, int TotalCount)> GetCategorysAsync(CategoryQuery categoryQuery, int page, int pageSize)
@@ -50,7 +47,7 @@ namespace InventoryService
             query = query.Where(x => !x.IsDeleted);
             if (!string.IsNullOrEmpty(categoryQuery.SName))
             {
-                query = query.Where(x => x.Name.Contains(categoryQuery.SName));
+                query =  query.Where(x => x.Name.Contains(categoryQuery.SName));
             }
             var Categories = await query.Skip(skip).Take(pageSize).ToListAsync();
 
@@ -61,7 +58,7 @@ namespace InventoryService
 
         public async Task<bool> UpdateAsync(Category Entity)
         {
-            await _unitOfWork.CategoryRepository.UpdateAsync(Entity);
+            await _unitOfWork.CategoryRepository.Update(Entity);
             return await _unitOfWork.CompleteAsync();
         }
     }
