@@ -49,6 +49,7 @@
 
                 <td>
                     <a asp-action="Edit" asp-route-id="@category.Id"><i class="fas fa-edit"></i></a>&nbsp;
+                    <a asp-action="Details" asp-route-id="@category.Id"><i class="fas fa-eye"></i></a>&nbsp;
                     <a href="javascript:void(0)" onclick="delete_Data('@category.Id')"><i class="fas fa-trash"></i></a>
                 </td>
 

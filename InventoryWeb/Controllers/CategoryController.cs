@@ -58,10 +58,10 @@ namespace InventoryWeb.Controllers
             }
             return RedirectToAction("Edit");
         }
-        public async Task<IActionResult> Details(Guid id)
+        public async Task<IActionResult> Details(Guid Id)
         {
-            var result = await new CategoryModel().GetCategoryByIdAsync(id);
-            return Json(result); 
+            var category = await Task.Run(() => new CategoryModel(Id));
+            return View(category);
         }
 
 
