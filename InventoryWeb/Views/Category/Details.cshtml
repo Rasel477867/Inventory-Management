@@ -1,0 +1,53 @@
+﻿@using InventoryWeb.Models
+@model CategoryModel
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+
+
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-body">
+            <div class="row" id="default">
+                <div class="col-12">
+                    <div class="card border-custom">
+                        <div class="card-header bg-custom">
+                            <h4 class="card-title"><i class="fa fa-clipboard"></i> Category  Details</h4>
+                            <div class="heading-elements">
+                                <a href="@Url.Action("Index","Category")" class="btn btn-sm btn-success white"><i class="fa fa-list white"></i> Category List</a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row ">
+                                <div class="col-md-10">
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control text-bold"> Category Name</label>
+                                        <label class="col-md-8 label-control">
+                                            : @Html.DisplayFor(model => model.Name)
+                                        </label>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control text-bold" asp-for="Description"></label>
+                                        <label class="col-md-8 label-control">
+                                            : @Html.DisplayFor(model => model.Description)
+                                        </label>
+                                    </div>
+
+
+                                </div>
+                         
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-between">
+                                <a href="javascript:history.back();" class="btn btn-light btn-medium text-white"><i class="fa fa-arrow-circle-left"></i> Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

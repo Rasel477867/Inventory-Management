@@ -1,0 +1,174 @@
+﻿@using InventoryWeb.Models
+@model CategoryModel
+
+ <br />
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    int sl = 1;
+}
+<div class="card-header bg-custom d-flex justify-content-between">
+    <div>
+        <h4 class="card-title"><i class="fa fa-clipboard"></i> Category List</h4>
+    </div>
+    <div class="heading-elements">
+        <a href="@Url.Action("Add","Category")" class="btn btn-sm btn-success white"><i class="fa fa-plus white"></i> New Category</a>
+    </div>
+</div>
+
+
+<table class="table border-3 custom-border" id="tbid">
+
+    <thead>
+        <tr>
+        
+            <th>
+                Sl
+            </th>
+            <th class="text-black">
+                Category Name
+            </th>
+            <th class="text-black">
+               Description
+            </th>
+       
+
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var category in Model.Categories!)
+        {
+            <tr>
+                <td class="serial">@(sl++)</td>
+                <td>@category.Name </td>
+                <td>@category.Description</td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@category.Id"><i class="fas fa-edit"></i></a>&nbsp;
+                    <a asp-action="Details" asp-route-id="@category.Id"><i class="fas fa-eye"></i></a>&nbsp;
+                    <a href="javascript:void(0)" onclick="delete_Data('@category.Id')"><i class="fas fa-trash"></i></a>
+                </td>
+
+            </tr>
+        }
+    </tbody> 
+</table>
+<div class="d-flex justify-content-end">
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end flex-wrap">
+                    <!-- First Page Icon -->
+                    <li class="page-item @(Model.Pagination?.CurrentPage == 1 ? "disabled" : "")">
+                        <a class="page-link" asp-controller="Category" asp-action="Index"
+                         
+                           asp-route-page="1" aria-label="First">
+                            <span aria-hidden="true">&laquo;&laquo;</span>
+                        </a>
+                    </li>
+
+                    <!-- Previous Page Icon -->
+                    <li class="page-item @(Model.Pagination!.HasPreviousPage ? "" : "disabled")">
+                        <a class="page-link" asp-controller="Category" asp-action="Index"
+                       
+                           asp-route-page="@(Model.Pagination.CurrentPage - 1)" aria-label="Previous">
+                            <span aria-hidden="true">&lsaquo;</span>
+                        </a>
+                    </li>
+
+                    <!-- Page Numbers -->
+                    @for (int i = 1; i <= Model.Pagination.TotalPages; i++)
+                    {
+                        <li class="page-item @(i == Model.Pagination.CurrentPage ? "active" : "")">
+                            <a class="page-link" asp-controller="Category" asp-action="Index"
+                          
+                               asp-route-page="@i">@i</a>
+                        </li>
+                    }
+
+                    <!-- Next Page Icon -->
+                    <li class="page-item @(Model.Pagination.HasNextPage ? "" : "disabled")">
+                        <a class="page-link" asp-controller="Category" asp-action="Index1"
+                        
+                           asp-route-page="@(Model.Pagination.CurrentPage + 1)" aria-label="Next">
+                            <span aria-hidden="true">&rsaquo;</span>
+                        </a>
+                    </li>
+
+                    <!-- Last Page Icon -->
+                    <li class="page-item @(Model.Pagination.CurrentPage == Model.Pagination.TotalPages ? "disabled" : "")">
+                        <a class="page-link" asp-controller="Category" asp-action="Index"
+             
+                           asp-route-page="@(Model.Pagination.TotalPages)" aria-label="Last">
+                            <span aria-hidden="true">&raquo;&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.PartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function delete_Data(id) {
+            // Show confirmation modal using SweetAlert2
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You want to delete this?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If 'Yes' is clicked, proceed with the delete action
+                    $.ajax({
+                        type: "POST",
+                        url: "/Category/Delete",
+                        data: {
+                            id: id,
+                            __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val() // CSRF token
+                        },
+                        success: function (response) {
+                            // Show success message
+                            Swal.fire(
+                                'Deleted!',
+                                'The record has been deleted.',
+                                'success'
+                            ).then(() => {
+                                location.reload(); // Reload the page after successful deletion
+                            });
+                        },
+                        error: function (response) {
+                            Swal.fire(
+                                'Error!',
+                                'There was a problem deleting the record.',
+                                'error'
+                            );
+                        }
+                    });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    Swal.fire(
+                        'Cancelled',
+                        'Your record is safe :)',
+                        'info'
+                    );
+                }
+            });
+        }
+    </script>
+}
+
+
+

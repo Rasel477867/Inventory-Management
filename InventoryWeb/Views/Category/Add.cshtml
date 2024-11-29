@@ -1,0 +1,84 @@
+﻿@using InventoryWeb.Models
+@model CategoryModel
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>Create</h1>
+
+<h4>Category</h4>
+
+
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-body">
+            <div class="row" id="default">
+                <div class="col-12">
+                    @using (Html.BeginForm("Add", "Category", FormMethod.Post, new { @class = "form-horizontal"}))
+                    {
+                        <div class="card border-custom">
+                            <div class="card-header bg-custom">
+                                <h4 class="card-title"><i class="fa fa-plus"></i> Add Student</h4>
+                            </div>
+                            <div class="card-body">
+                                @Html.AntiForgeryToken()
+                                
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <form asp-action="Add" enctype="multipart/form-data">
+                                            <div class="row">
+                                                <div class="col-6">
+
+                                                    <div class="form-group">
+                                                        <label asp-for="Name"></label>
+                                                        <input type="text" asp-for="Name" class="form-control form-control-medium">
+                                                        <span class="text-danger" asp-validation-for="Name"></span>
+                                                    </div>
+                                                    <br />
+
+                                                    <div class="form-group">
+                                                        <label asp-for="Description"></label>
+                                                        <input type="text" asp-for="Description" class="form-control form-control-medium">
+                                                        <span class="text-danger" asp-validation-for="Description"></span>
+                                                    </div>
+                                                    <br />
+
+
+                                                    <br />
+
+                                                </div>
+
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-between">
+                                    <a href="javascript:history.back();" class="btn btn-secondary btn-medium">
+                                        <i class="fas fa-arrow-left"></i> Back
+                                    </a>
+                                    <button type="submit" class="btn btn-success btn-medium" id="submitButton">
+                                        <i class="fas fa-save"></i> Save
+                                    </button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+
+
+}

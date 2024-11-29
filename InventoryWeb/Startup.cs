@@ -11,6 +11,10 @@ using Microsoft.Extensions.Hosting;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using InventoryRepository.Data;
+using InventoryService.Contact;
+using InventoryService;
+using InventoryRepository.Contacts;
+using InventoryRepository;
 
 namespace InventoryWeb
 {
@@ -53,6 +57,8 @@ namespace InventoryWeb
 
 
             // All Depedency inject here
+            services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IProductUnitOfWork, ProductUnitOfWork>();
 
             
 
@@ -70,7 +76,7 @@ namespace InventoryWeb
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-
+         
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
