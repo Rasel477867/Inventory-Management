@@ -43,7 +43,6 @@ namespace InventoryRepository.Core
 
                 });
             }
-            
 
         }
 
@@ -61,12 +60,9 @@ namespace InventoryRepository.Core
 
         public virtual async Task Update(T Entity)
         {
-            await Task.Run(() =>
-            {
-
-                table.Update(Entity);
-
-            });
+            await Delete(Entity.Id);
+            await _db.SaveChangesAsync();
+            await Add(Entity);
 
         }
 

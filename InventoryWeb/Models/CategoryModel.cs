@@ -53,6 +53,12 @@ namespace InventoryWeb.Models
             return await _categoryService.AddAsync(this);
 
         }
+        public async Task<Guid> UpdateCategoryAsync(Category categoryModel)
+        {
+            
+           await _categoryService.UpdateAsync(categoryModel);
+            return base.Id; 
+        }
         public async Task<bool> DeleteCategoryAsync(Guid CategoryId)
         {
             return await _categoryService.DeleteAsync(CategoryId);

@@ -1,4 +1,5 @@
-﻿using InventoryCore.Not_Mapped;
+﻿using InventoryCore;
+using InventoryCore.Not_Mapped;
 using InventoryWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,7 +28,7 @@ namespace InventoryWeb.Controllers
             if(ModelState.IsValid)
             {
                 var id = await Task.Run(() => new CategoryModel().AddCategoryAsync(categoryModel));
-                TempData["SuccessNotify"] = id != null ? "Category Add Successfully" : null;
+               // TempData["SuccessNotify"] = id != null ? "Category Add Successfully" : null;
                 return RedirectToAction("Index");
 
             }
@@ -39,5 +40,30 @@ namespace InventoryWeb.Controllers
            
             return Json(result);
         }
+        public async Task<IActionResult> Edit(Guid Id)
+        {
+            var category= await Task.Run(() => new CategoryModel(Id));
+            return View(category);
+        
+        
+       }
+        [HttpPost]
+        public async Task<IActionResult> Edit(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                var id = await Task.Run(() => new CategoryModel().UpdateCategoryAsync(category));
+               
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Edit");
+        }
+        public async Task<IActionResult> Details(Guid id)
+        {
+            var result = await new CategoryModel().GetCategoryByIdAsync(id);
+            return Json(result); 
+        }
+
+
     }
 }

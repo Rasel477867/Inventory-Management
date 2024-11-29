@@ -17,6 +17,7 @@
           rel="stylesheet">
     <link href="~/theam/css/sb-admin-2.css" rel="stylesheet" />
     <link href="~/theam/css/sb-admin-2.min.css" rel="stylesheet" />
+    <link href="~/theam/vendor/toastr/toastr.min.css" rel="stylesheet" />
     <!-- Custom styles for this template-->
 
 
@@ -61,12 +62,12 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <span>Product</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
+                        <h6 class="collapse-header">Product</h6>
+                        <a class="collapse-item" asp-action="Index" asp-controller="Category">Category</a>
                         <a class="collapse-item" href="cards.html">Cards</a>
                     </div>
                 </div>
@@ -550,28 +551,26 @@
     <!-- Core plugin JavaScript-->
     <script src="~/theam/vendor/jquery-easing/jquery.easing.min.js"></script>
 
+    <!-- Toastr script added here -->
+    <script src="~/theam/vendor/toastr/toastr.min.js"></script>
+
     <!-- Custom scripts for all pages-->
     <script src="~/theam/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
     <script src="~/theam/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
     <script src="~/theam/js/demo/chart-area-demo.js"></script>
     <script src="~/theam/js/demo/chart-pie-demo.js"></script>
-    
+
+    <!-- Toastr Notifications -->
     @if (TempData["ErrorNotify"] != null)
     {
         <script>
             toastr.error('@TempData["ErrorNotify"]');
-
         </script>
     }
     @if (TempData["SuccessNotify"] != null)
     {
         <script>
             toastr.success('@TempData["SuccessNotify"]');
-
         </script>
     }
     @if (TempData["InfoNotify"] != null)
@@ -580,7 +579,6 @@
             toastr.info('@TempData["InfoNotify"]');
         </script>
     }
-
     <!--menu active-->
     <script type="text/javascript">
 
